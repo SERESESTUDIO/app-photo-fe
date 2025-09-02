@@ -7,11 +7,13 @@ import { useMultiplayerConection } from "../../../services/useMultiplayerConecti
 import { JsonToTable } from "react-json-to-table";
 
 import './adminManager.css';
+import { AdminProcess } from "./adminprocess.js";
 export const AdminManager = ({user=emptyUser}) => {
     const [ openPanelEvent, setPanelEvent ] = useState<boolean>(false);
     const [events, setEvents] = useState<IEvent[]>([]);
     const [eventEdit, setEventEdit] = useState<IEvent | null>(null);
     const [deleteEvent, setDeleteEvent] = useState<IEvent | null>(null);
+    const [processEvent, setProcessEvent] = useState<IEvent | null>(null);
     const { data, setValues } = useGetEvents();
     const {onConnect, events: updateEvents, cleanEvents} = useMultiplayerConection();
     useEffect(()=>{
@@ -28,7 +30,7 @@ export const AdminManager = ({user=emptyUser}) => {
     },[data]);
   return (
     <>
-    <h1>Admin</h1>
+      <h1>Admin</h1>
       <hr/>
       <div>
         <button onClick={()=>{setPanelEvent(true)}}>Crear nuevo evento</button>
@@ -46,13 +48,14 @@ export const AdminManager = ({user=emptyUser}) => {
           <div>{event.accessCode}</div>
           <div>{event.createdAt}</div>
           <div>
-            <button onClick={()=>setEventEdit(event)}>edit</button>
-            <button onClick={()=>setDeleteEvent(event)}>delete</button>
+            <button onClick={()=>setProcessEvent(event)}>Procesos</button>
+            <button onClick={()=>setEventEdit(event)}>Editar</button>
+            <button onClick={()=>setDeleteEvent(event)}>Eliminar</button>
           </div>
         </div>)}
       </div>
       <button onClick={()=>cleanEvents()}>Clean multiplayer events</button>
-      <JsonToTable json={updateEvents} />
+      {(updateEvents) && <JsonToTable json={updateEvents} />}
       {(openPanelEvent) && <PanelEvent 
         user={user} 
         title="Crear nuevo evento" 
@@ -62,6 +65,10 @@ export const AdminManager = ({user=emptyUser}) => {
             setValues();
             setPanelEvent(false);
         }}
+      />}
+      {(processEvent) && <AdminProcess
+        event={processEvent}
+        onClose={()=>setProcessEvent(null)}
       />}
       {(eventEdit) && <PanelEvent
         user={user}
@@ -75,6 +82,8 @@ export const AdminManager = ({user=emptyUser}) => {
         }}
       />}
       {(deleteEvent) && <DeleteAdvert
+        title="Eliminar evento"
+        description="Estas seguro que deseas eliminar el evento"
         event={deleteEvent}
         onCancel={()=>setDeleteEvent(null)}
         onDelete={()=>{

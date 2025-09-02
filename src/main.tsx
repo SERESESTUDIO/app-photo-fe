@@ -6,6 +6,9 @@ import { Monitor2 } from './pages/monitor2'
 import { Monitor3 } from './pages/monitor3'
 import { Player } from './pages/player'
 
+import './fonts.css';
+import './text.css';
+
 createRoot(document.getElementById('root')!).render(
     <HashRouter>
         <Routes>

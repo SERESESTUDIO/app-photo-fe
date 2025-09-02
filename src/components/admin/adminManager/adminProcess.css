@@ -1,0 +1,9 @@
+.admin-process-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 500px;
+    height: 800px;
+    background-color: #ffffff;
+    border: 1px solid black;
+}

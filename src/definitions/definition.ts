@@ -36,3 +36,19 @@ export const emptyUser:IUser = {
     createdAt: "",
     updatedAt: ""
 }
+export interface IProcess {
+    id:"",
+    name:"",
+    timer:0,
+    createdAt:"",
+    updatedAt:"",
+    eventId:""
+}
+export const emptyProcess:IProcess = {
+    id: "",
+    name: "",
+    timer: 0,
+    createdAt: "",
+    updatedAt: "",
+    eventId: ""
+}

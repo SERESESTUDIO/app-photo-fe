@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "bold";
+  src: url("./fonts/Graphik-Bold-03.otf");
+}
+@font-face {
+  font-family: "medium";
+  src: url("./fonts/Graphik-Semibold.ttf");
+}
+@font-face {
+  font-family: "regular";
+  src: url("./fonts/Graphik-Regular-01.otf");
+}
