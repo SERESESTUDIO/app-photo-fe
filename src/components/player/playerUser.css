@@ -1,0 +1,34 @@
+.player-user-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #ffffff;
+}
+.player-user-header {
+    background-image: linear-gradient(#B11D23, #E41F2E);
+    width: 100vw;
+    height: 50vh;
+    display: grid;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.player-user-header img {
+    height: 30%;
+}
+.player-user-body {
+    padding: 40px;
+    display: grid;
+    justify-content: center;
+}
+.player-user-body label {
+    margin-bottom: 5px;
+}
+.player-user-body input {
+    margin-bottom: 15px;
+}
+.player-user-body button {
+    margin-top: 10px;
+}

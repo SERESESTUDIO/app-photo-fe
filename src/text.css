@@ -1,5 +1,25 @@
-h1 {
+.h1-1 {
     font-family: 'bold';
     color: #ffffff;
     font-size: 24pt;
+}
+.h2-1 {
+    font-family: 'bold';
+    color: #ffffff;
+    font-size: 18pt;
+}
+.label-1 {
+    font-family: 'medium';
+    color: #6C7480;
+    font-size: 12pt;
+}
+.advert {
+    width: 100%;
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    color: #E41F2E;
+    font-family: 'regular';
+    font-size: 10pt;
+    text-align: center;
 }

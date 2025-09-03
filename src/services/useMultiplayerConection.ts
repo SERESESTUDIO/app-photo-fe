@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { emptyEvent, emptyUser } from "../definitions/definition";
 
 export const useMultiplayerConection = () => {
+    const [loading, setLoading] = useState<boolean>(false);
     const [socket, setSocket] = useState<any>(null);
     const [events, setEvents] = useState<any>();
     const [constantEvent, setConstantEvent] = useState<any>();
@@ -20,6 +21,7 @@ export const useMultiplayerConection = () => {
       }
     },[socket, constantEvent]);
     const onConnect = async ({event=emptyEvent, mode=0, user=emptyUser}) => {
+      setLoading(true);
       setConstantEvent(event);
       let _socket = await io(import.meta.env.VITE_MULTIPLAYER_API);
       if(_socket && event != emptyEvent) {
@@ -45,7 +47,10 @@ export const useMultiplayerConection = () => {
           }
         });
       }
-      if(_socket) setSocket(_socket);
+      if(_socket) {
+        setSocket(_socket);
+        setLoading(false);
+      }
     };
     const cleanEvents = () => {
       socket.emit("cleanEvents");
@@ -60,6 +65,7 @@ export const useMultiplayerConection = () => {
     onConnect,
     cleanEvents,
     socket,
-    events
+    events,
+    loading
   }
 }

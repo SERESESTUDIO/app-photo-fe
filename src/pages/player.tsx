@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
-import { MonitorAccess } from "../components/monitor/monitorAccess"
-import type { IUser } from "../definitions/definition";
-import { PlayerUser } from "../components/player/playerUser";
-import { useMultiplayerConection } from "../services/useMultiplayerConection";
+import type { IUser } from "../definitions/definition.js";
+import { PlayerUser } from "../components/player/playerUser.js";
+import { useMultiplayerConection } from "../services/useMultiplayerConection.js";
+import { PlayerWaiting } from "../components/player/playerWaiting.js";
 
 export const Player = () => {
   const [user, setUser] = useState<IUser | null>(null);
   const [event, setEvent] = useState<any>();
   const [rawEvent, setRawEvent] = useState<any>();
   const { onConnect, socket } = useMultiplayerConection();
+  useEffect(()=>{
+    if(event) {
+      window.addEventListener("dataUpdated", ({detail}:any)=>{
+        //console.log(detail.events[event.id]);
+      })
+    }
+  },[event]);
   useEffect(()=>{
     if(user && rawEvent) {
       onConnect({ event:rawEvent, mode:4, user });
@@ -30,7 +37,7 @@ export const Player = () => {
   return (
     <>
       {(!user) && <PlayerUser onAccess={onAccessHandler}/>}
-      {(user && socket) && <div>{event?.id}</div>}
+      {(user && socket) && <PlayerWaiting  event={event}/>}
     </>
   )
 }

@@ -8,6 +8,8 @@ import { Player } from './pages/player'
 
 import './fonts.css';
 import './text.css';
+import './buttons.css';
+import './inputs.css';
 
 createRoot(document.getElementById('root')!).render(
     <HashRouter>

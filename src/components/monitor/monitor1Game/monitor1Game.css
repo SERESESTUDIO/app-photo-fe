@@ -9,3 +9,29 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.monitor-scan-body {
+    position: fixed;
+    left: calc(50vw - 300px);
+    top: 8vh;
+    width: 600px;
+    height: 80vh;
+    display: grid;
+    grid-template-rows: []6% []12% []60% []20%;
+    justify-content: center;
+    justify-items: center;
+}
+.monitor-scan-body img {
+    width: 60%;
+}
+.monitor-code {
+    width: 400px;
+    height: 400px;
+    background-color: #ffffff;
+    display: grid;
+}
+.monitor-code svg {
+    width: 95%;
+    height: 95%;
+    align-self: center;
+    justify-self: center;
+}

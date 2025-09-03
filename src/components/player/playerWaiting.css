@@ -1,0 +1,18 @@
+.player-waiting-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(#B11D23, #E41F2E);
+    display: grid;
+    grid-template-rows: []30% []6% []20%;
+    justify-content: center;
+    justify-items: center;
+}
+.player-waiting-container img {
+    width: 60%;
+}
+.player-waiting-container label {
+    color: #ffffff;
+}
