@@ -4,7 +4,8 @@ export interface IEvent {
     adminId:string,
     accessCode:string,
     createdAt:string,
-    updatedAt:string
+    updatedAt:string,
+    users:any[]
 }
 export const emptyEvent:IEvent = {
     id:"",
@@ -12,7 +13,8 @@ export const emptyEvent:IEvent = {
     adminId: "",
     accessCode: "",
     createdAt: "",
-    updatedAt: ""
+    updatedAt: "",
+    users:[]
 }
 export interface IUser {
     id:string,

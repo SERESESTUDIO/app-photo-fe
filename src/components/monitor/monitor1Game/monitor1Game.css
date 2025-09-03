@@ -12,20 +12,20 @@
 .monitor-scan-body {
     position: fixed;
     left: calc(50vw - 300px);
-    top: 8vh;
+    top: 5vh;
     width: 600px;
     height: 80vh;
     display: grid;
-    grid-template-rows: []6% []12% []60% []20%;
+    grid-template-rows: []6% []12% []55% []0% []15%;
     justify-content: center;
     justify-items: center;
 }
 .monitor-scan-body img {
-    width: 60%;
+    width: 40%;
 }
 .monitor-code {
-    width: 400px;
-    height: 400px;
+    width: 40vh;
+    height: 40vh;
     background-color: #ffffff;
     display: grid;
 }

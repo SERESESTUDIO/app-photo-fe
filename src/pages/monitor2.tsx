@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { IUser } from "../definitions/definition";
 import { LogIn } from "../components/admin/logIn/logIn";
 import { MonitorAccess } from "../components/monitor/monitorAccess";
+import { WaitingMonitor } from "../components/monitor/waitingMonitor/waitingMonitor";
 
 export const Monitor2 = () => {
   const [user, setUser] = useState<IUser | null>(null);
@@ -22,7 +23,7 @@ export const Monitor2 = () => {
     <>
       {(!user) && <LogIn onPassAccess={(user)=>setUser(user)}/>}
       {(user && !socket) && <MonitorAccess connectionMode={2} onAccess={onAccessHandler}/>}
-      {(user && socket) && <div>{event?.id}</div>}
+      {(user && socket) && <WaitingMonitor event={event}/>}
     </>
   )
 }

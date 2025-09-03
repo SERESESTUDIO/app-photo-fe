@@ -1,0 +1,28 @@
+.monitor-waiting-preview-users-container {
+    padding: 5px;
+    position: fixed;
+    left: 5vw;
+    top: 5vh;
+    width: 90vw;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: []12.5% []12.5% []12.5% []12.5% []12.5% []12.5% []12.5% []12.5%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-content: start;
+    align-items: start;
+}
+.monitor-waiting-user-preview {
+    width: 80%;
+    padding-left: 5px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    max-height: 50px;
+    font-family: 'regular';
+    font-size: 8pt;
+    color: #ffffff;
+    background-image: linear-gradient(#B11D23, #E41F2E);
+    text-align: center;
+    box-shadow: 0 0 4px 1px black;
+}

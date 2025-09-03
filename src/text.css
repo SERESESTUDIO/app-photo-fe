@@ -13,6 +13,11 @@
     color: #6C7480;
     font-size: 12pt;
 }
+.label-2 {
+    font-family: 'medium';
+    color: #ffffff;
+    font-size: 12pt;
+}
 .advert {
     width: 100%;
     position: fixed;

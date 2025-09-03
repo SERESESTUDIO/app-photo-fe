@@ -5,17 +5,19 @@ import { PanelEvent } from "../panelEvent.js";
 import { DeleteAdvert } from "../deleteAdvert/deleteAdvert.js";
 import { useMultiplayerConection } from "../../../services/useMultiplayerConection.js";
 import { JsonToTable } from "react-json-to-table";
+import { AdminProcess } from "./adminProcess.js";
 
 import './adminManager.css';
-import { AdminProcess } from "./adminprocess.js";
+let intervalEvent:any;
 export const AdminManager = ({user=emptyUser}) => {
     const [ openPanelEvent, setPanelEvent ] = useState<boolean>(false);
     const [events, setEvents] = useState<IEvent[]>([]);
+    const [eventIndex, setEventIndex] = useState<number>(0);
     const [eventEdit, setEventEdit] = useState<IEvent | null>(null);
     const [deleteEvent, setDeleteEvent] = useState<IEvent | null>(null);
     const [processEvent, setProcessEvent] = useState<IEvent | null>(null);
     const { data, setValues } = useGetEvents();
-    const {onConnect, events: updateEvents, cleanEvents} = useMultiplayerConection();
+    const {onConnect, events: updateEvents, cleanEvents, socket} = useMultiplayerConection();
     useEffect(()=>{
       setValues();
       onConnect({mode:0});
@@ -28,6 +30,21 @@ export const AdminManager = ({user=emptyUser}) => {
         }
       }
     },[data]);
+    const onStartGameHandler = () => {
+      if(socket) {
+        intervalEvent = setInterval(()=>{
+          socket.emit("startEvent", { id: events[eventIndex] });
+        },15);
+      }
+    }
+    const onPauseGameHandler = () => {
+      clearInterval(intervalEvent);
+    }
+    const onStopGameHandler = () => {
+      if(socket) {
+        socket.emit("stopEvent", { id: events[eventIndex] });
+      }
+    }
   return (
     <>
       <h1>Admin</h1>
@@ -54,7 +71,15 @@ export const AdminManager = ({user=emptyUser}) => {
           </div>
         </div>)}
       </div>
-      <button onClick={()=>cleanEvents()}>Clean multiplayer events</button>
+      <div>
+        <select value={eventIndex} onChange={({target})=>setEventIndex(parseInt(target.value))}>
+          {events.map((event, index)=><option key={index} value={index}>{event.name}</option>)}
+        </select>
+        <button onClick={()=>cleanEvents()}>Limpiar eventos multijugador</button>
+        <button onClick={onStartGameHandler}>Iniciar</button>
+        <button onClick={onPauseGameHandler}>Pausar</button>
+        <button onClick={onStopGameHandler}>Detener</button>
+      </div>
       {(updateEvents) && <JsonToTable json={updateEvents} />}
       {(openPanelEvent) && <PanelEvent 
         user={user} 
