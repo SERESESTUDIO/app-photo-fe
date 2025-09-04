@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@wojtekmaj/react-qr-svg": "^2.0.0",
     "@types/socket.io-client": "^1.4.36",
+    "@wojtekmaj/react-qr-svg": "^2.0.0",
+    "bcrypt-ts": "^7.1.0",
+    "ncrypt-js": "^2.1.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-json-to-table": "^0.1.7",

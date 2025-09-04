@@ -1,0 +1,14 @@
+.counter-panel-container {
+    position: fixed;
+    width: 50vw;
+    height: 80vh;
+    left: 25vw;
+    top: 10vh;
+    display: grid;
+    grid-template-rows: []15% []25% []25% []25%;
+    justify-items: center;
+    align-content: start;
+}
+.counter-panel-container img {
+    width: 40%
+}
