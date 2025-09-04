@@ -23,7 +23,7 @@ export const Monitor2 = () => {
     <>
       {(!user) && <LogIn onPassAccess={(user)=>setUser(user)}/>}
       {(user && !socket) && <MonitorAccess connectionMode={2} onAccess={onAccessHandler}/>}
-      {(user && socket) && <WaitingMonitor event={event}/>}
+      {(user && socket && event && !event.state || user && socket && event && event.state === "") && <WaitingMonitor event={event}/>}
     </>
   )
 }

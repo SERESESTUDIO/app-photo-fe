@@ -5,7 +5,11 @@ export interface IEvent {
     accessCode:string,
     createdAt:string,
     updatedAt:string,
-    users:any[]
+    users:any[],
+    state?:string,
+    counter?:number,
+    timer?:number,
+    process?:any
 }
 export const emptyEvent:IEvent = {
     id:"",
@@ -14,7 +18,11 @@ export const emptyEvent:IEvent = {
     accessCode: "",
     createdAt: "",
     updatedAt: "",
-    users:[]
+    users:[],
+    state: "",
+    counter: 0,
+    timer: 0,
+    process:{}
 }
 export interface IUser {
     id:string,

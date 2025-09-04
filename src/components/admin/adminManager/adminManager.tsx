@@ -8,6 +8,7 @@ import { JsonToTable } from "react-json-to-table";
 import { AdminProcess } from "./adminProcess.js";
 
 import './adminManager.css';
+import { useGetProcessByEventId } from "../queries/useGetProcessByeventId.js";
 let intervalEvent:any;
 export const AdminManager = ({user=emptyUser}) => {
     const [ openPanelEvent, setPanelEvent ] = useState<boolean>(false);
@@ -17,6 +18,7 @@ export const AdminManager = ({user=emptyUser}) => {
     const [deleteEvent, setDeleteEvent] = useState<IEvent | null>(null);
     const [processEvent, setProcessEvent] = useState<IEvent | null>(null);
     const { data, setValues } = useGetEvents();
+    const { data: dataProcess, setValues: processValues} = useGetProcessByEventId();
     const {onConnect, events: updateEvents, cleanEvents, socket} = useMultiplayerConection();
     useEffect(()=>{
       setValues();
@@ -30,20 +32,43 @@ export const AdminManager = ({user=emptyUser}) => {
         }
       }
     },[data]);
+    useEffect(()=>{
+      if(dataProcess) {
+        const { success, process: _process } = dataProcess;
+        if(success) {
+          if(socket) {
+            socket.emit("connectEvent", {mode:1, event: events[eventIndex], process: {process: _process}} );
+          }
+        }
+      }
+    },[dataProcess]);
     const onStartGameHandler = () => {
       if(socket) {
+        window.addEventListener("dataUpdated", ({detail}:any)=>{
+          const { events } = detail;
+          const myEvent:IEvent = events[eventIndex];
+          if(myEvent) {
+            if(myEvent.state && myEvent.state === "finished") {
+              if(intervalEvent) clearInterval(intervalEvent);
+            }
+          }
+        });
         intervalEvent = setInterval(()=>{
-          socket.emit("startEvent", { id: events[eventIndex] });
+          socket.emit("startEvent", { id: events[eventIndex].id });
         },15);
       }
     }
     const onPauseGameHandler = () => {
-      clearInterval(intervalEvent);
+      if(intervalEvent) clearInterval(intervalEvent);
     }
     const onStopGameHandler = () => {
+      if(intervalEvent) clearInterval(intervalEvent);
       if(socket) {
-        socket.emit("stopEvent", { id: events[eventIndex] });
+        socket.emit("stopEvent", { id: events[eventIndex].id });
       }
+    }
+    const onCreateEventHandler = () => {
+      processValues({ eventId: events[eventIndex].id });
     }
   return (
     <>
@@ -75,7 +100,8 @@ export const AdminManager = ({user=emptyUser}) => {
         <select value={eventIndex} onChange={({target})=>setEventIndex(parseInt(target.value))}>
           {events.map((event, index)=><option key={index} value={index}>{event.name}</option>)}
         </select>
-        <button onClick={()=>cleanEvents()}>Limpiar eventos multijugador</button>
+        <button onClick={onCreateEventHandler}>Crear evento multijugador</button>
+        <button onClick={()=>cleanEvents()}>Eliminar eventos multijugador</button>
         <button onClick={onStartGameHandler}>Iniciar</button>
         <button onClick={onPauseGameHandler}>Pausar</button>
         <button onClick={onStopGameHandler}>Detener</button>
