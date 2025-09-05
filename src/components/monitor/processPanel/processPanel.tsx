@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { emptyEvent } from "../../../definitions/definition.js";
 import './processPanel.css';
+import { convertSecondsToMinutes } from "../../../services/convertTimer.js";
+import { TimerIcon } from "../../icons/timerIcon.js";
 
 export const ProcessPanel = ({event=emptyEvent}) => {
   const [timer, setTimer] = useState<string>("");
@@ -20,10 +22,11 @@ export const ProcessPanel = ({event=emptyEvent}) => {
   return (
     <div className="monitor-container">
       <div className="process-panel-container">
-        <div></div>
+        <img className="process-panel-container-head" src="./img/selfie.webp"/>
         <h1 className="h1-1">{event.state}</h1>
-        <h2 className="h2-1">{`Tiempo: ${timer}`}</h2>
-        <img src="./img/Logo-02.webp"/>
+        <TimerIcon/>
+        <h2 className="h1-2">{`${convertSecondsToMinutes(timer)}`}</h2>
+        <img className="process-panel-container-img" src="./img/Logo-02.webp"/>
       </div>
     </div>
   )

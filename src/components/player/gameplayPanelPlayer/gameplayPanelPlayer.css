@@ -1,0 +1,80 @@
+.player-gameplay-header {
+    background-image: linear-gradient(#B11D23, #E41F2E);
+    width: 100vw;
+    height: 50vh;
+    display: grid;
+    grid-template-rows: []40% []50%;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+}
+.player-gameplay-header img {
+    width: 30%;
+    margin-top: 40%;
+}
+.player-gameplay-header h2 {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 0px;
+}
+.player-gameplay-body {
+    display: grid;
+    height: 50%;
+    padding-top: 15%;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-columns: []50% []50%;
+    justify-items: center;
+    align-items: start;
+}
+.player-gameplay-body-svg {
+    position: absolute;
+    bottom: 10vh;
+    width: 10vw;
+    height: 10vw;
+    color: #6C7480;
+    fill: #6C7480;
+}
+.player-gameplay-body h2 {
+    position: absolute;
+    bottom: 16vh;
+    color: #E41F2E;
+    font-family: 'bold';
+    font-size: 24pt;
+}
+.player-gameplay-head {
+    background-color: #E41F2E;
+    width: 100vw;
+    height: 6vh;
+}
+.player-gameplay-img {
+    background: var(--player--var-img, auto);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 44vh;
+}
+.player-gameplay-advert {
+    position: absolute;
+    top: 45vh;
+    left: 10vw;
+    background-image: linear-gradient(#B11D23, #E41F2E);
+    width: 80vw;
+    height: 70px;
+    border-radius: 10px;
+}
+.player-gameplay-advert div {
+    background-color: #ffffff;
+    width: 85%;
+    height: 60%;
+    border-radius: 10px;
+    justify-self: center;
+    margin-top: 5%;
+    text-align: center;
+    color: #6C7480;
+    font-family: 'regular';
+    font-size: 10pt;
+    line-height: 40px;
+}

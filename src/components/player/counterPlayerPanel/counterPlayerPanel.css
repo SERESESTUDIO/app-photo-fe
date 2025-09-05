@@ -1,0 +1,29 @@
+.player-counter-header {
+  background-image: linear-gradient(#b11d23, #e41f2e);
+  width: 100vw;
+  height: 50vh;
+  display: grid;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.player-counter-header img {
+    height: 80%;
+}
+.player-counter-body {
+    padding: 40px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    color: #6C7480;
+    height: 40%;
+}
+.player-counter-body svg {
+    width: 20vw;
+    fill: #e41f2e;
+}
+.player-counter-body h2 {
+    font-family: 'bold';
+    font-size: 24pt;
+    color: #e41f2e;
+}

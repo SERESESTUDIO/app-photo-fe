@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { emptyEvent } from '../../../definitions/definition.js';
 import './counterPlayerPanel.css';
+import { LockIcon } from '../../icons/lockIcon.js';
 
 export const CounterPlayerPanel = ({event=emptyEvent}) => {
     const [counter, setCounter] = useState<string>("");
@@ -13,12 +14,13 @@ export const CounterPlayerPanel = ({event=emptyEvent}) => {
     },[event]);
   return (
     <div className='player-user-container'>
-        <div className="player-user-header">
+        <div className="player-counter-header">
             <img src="./img/Logo-02.webp"/>
         </div>
-        <div className='player-user-body'>
+        <div className='player-counter-body'>
+            <LockIcon/>
             <h2>{counter}</h2>
-            <p>¡Espera hasta que el reto inicie!</p>
+            <p className='player-counter-body-p'>¡Espera hasta que el reto inicie!</p>
         </div>
     </div>
   )
