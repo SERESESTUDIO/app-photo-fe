@@ -13,6 +13,9 @@ export const Player = () => {
   const [rawEvent, setRawEvent] = useState<any>();
   const { onConnect, socket } = useMultiplayerConection();
   useEffect(()=>{
+    allows();
+  },[])
+  useEffect(()=>{
       if(socket) {
         window.addEventListener("dataUpdated", ({detail}:any)=>{
           const { events, constantEvent } = detail;
@@ -26,6 +29,9 @@ export const Player = () => {
       onConnect({ event:rawEvent, mode:4, user });
     }
   },[user, rawEvent]);
+  const allows = async() => {
+    await navigator.mediaDevices.getUserMedia({ video: true });
+  }
   const onAccessHandler = (data:any) => {
   //setSocket({event:data.event, socket:data.socket});
     setUser(data.user);
@@ -36,7 +42,7 @@ export const Player = () => {
       {(!user) && <PlayerUser onAccess={onAccessHandler}/>}
       {(user && socket && event && !event.counter && !event.state || user && socket && event && event.counter === 0 && event.state && event.state != "finished") && <PlayerWaiting  event={event}/>}
       {(user && socket && event && event.counter && event.counter > 0 && !event.timer || user && socket && event && event.counter && event.counter > 0 && event.timer && event.timer === 0) && <CounterPlayerPanel event={event}/>}
-      {(user && socket && event && event.timer && event.timer > 0 && event.state != "finished") && <GameplayPanelPlayer event={event}/>}
+      {(user && socket && event && event.timer && event.timer > 0 && event.state != "finished") && <GameplayPanelPlayer socket={socket} event={event} user={user}/>}
       {(user && socket && event && event.state && event.state === "finished") && <FinishedPanelPlayer/>}
     </>
   )

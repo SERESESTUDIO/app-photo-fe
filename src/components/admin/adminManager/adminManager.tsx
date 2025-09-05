@@ -9,7 +9,6 @@ import { AdminProcess } from "./adminProcess.js";
 
 import './adminManager.css';
 import { useGetProcessByEventId } from "../queries/useGetProcessByeventId.js";
-let intervalEvent:any;
 export const AdminManager = ({user=emptyUser}) => {
     const [ openPanelEvent, setPanelEvent ] = useState<boolean>(false);
     const [events, setEvents] = useState<IEvent[]>([]);
@@ -44,25 +43,15 @@ export const AdminManager = ({user=emptyUser}) => {
     },[dataProcess]);
     const onStartGameHandler = () => {
       if(socket) {
-        window.addEventListener("dataUpdated", ({detail}:any)=>{
-          const { events } = detail;
-          const myEvent:IEvent = events[eventIndex];
-          if(myEvent) {
-            if(myEvent.state && myEvent.state === "finished") {
-              if(intervalEvent) clearInterval(intervalEvent);
-            }
-          }
-        });
-        intervalEvent = setInterval(()=>{
-          socket.emit("startEvent", { id: events[eventIndex].id });
-        },15);
+        socket.emit("startEvent", { id: events[eventIndex].id });
       }
     }
     const onPauseGameHandler = () => {
-      if(intervalEvent) clearInterval(intervalEvent);
+      if(socket) {
+        socket.emit("pauseEvent", { id: events[eventIndex].id });
+      }
     }
     const onStopGameHandler = () => {
-      if(intervalEvent) clearInterval(intervalEvent);
       if(socket) {
         socket.emit("stopEvent", { id: events[eventIndex].id });
       }

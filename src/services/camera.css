@@ -1,0 +1,24 @@
+.camera-preview {
+    width: 100%;
+}
+.camera-button-take-photo {
+    position: absolute;
+    bottom: 10vh;
+    width: 5vh;
+    height: 5vh;
+    left: calc(50vw - 2.5vh);
+    background: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+}
+.camera-button-take-photo::after {
+    position: absolute;
+    margin-left: -4vh;
+    margin-top: -4vh;
+    content: ".";
+    width: 8vh;
+    height: 8vh;
+    outline: 1px solid #ffffff;
+    border-radius: 50%;
+}
