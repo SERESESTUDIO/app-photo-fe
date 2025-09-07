@@ -8,9 +8,19 @@
   color: #ffffff;
   font-size: 32pt;
 }
+.h1-3 {
+  font-family: "bold";
+  color: #e41f2e;
+  font-size: 32pt;
+}
 .h2-1 {
   font-family: "bold";
   color: #ffffff;
+  font-size: 18pt;
+}
+.h2-3 {
+  font-family: "bold";
+  color: #6c7480;
   font-size: 18pt;
 }
 .label-1 {
@@ -39,4 +49,9 @@
   font-family: "regular";
   font-size: 10pt;
   color: #6C7480;
+}
+.p {
+  font-family: 'regular';
+  color: #6C7480;
+  font-size: 12pt;
 }

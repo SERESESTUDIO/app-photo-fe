@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { emptyEvent, emptyProcess } from '../../../definitions/definition';
-import { useCreateProcess } from '../queries/useCreateProcess';
-import { useUpdateProcess } from '../queries/useUpdateProcess';
+import { emptyEvent, emptyProcess } from '../../../definitions/definition.js';
+import { useCreateProcess } from '../queries/useCreateProcess.js';
+import { useUpdateProcess } from '../queries/useUpdateProcess.js';
 import './panelProcess.css';
 
 export const PanelProcess = ({event=emptyEvent, title="", buttonActionTitle="", onCancel=()=>{}, onSubmitted=()=>{}, process=emptyProcess}) => {
@@ -33,15 +33,15 @@ export const PanelProcess = ({event=emptyEvent, title="", buttonActionTitle="", 
   }
   return (
     <div className="panel-process">
-      <h2>{title}</h2>
+      <h2 className='h2-3'>{title}</h2>
       <form onSubmit={onSubmitHandler}>
-        <label>Nombre</label>
-        <input type='text' placeholder='Ingresa el nombre de la face' value={name} onChange={({target})=>setName(target.value)}></input>
-        <label>tiempo</label>
-        <input type='number' value={timer} onChange={({target})=>setTimer( parseInt(target.value))}></input>
+        <label className='label-1'>Nombre</label>
+        <input className='input-1' type='text' placeholder='Ingresa el nombre de la face' value={name} onChange={({target})=>setName(target.value)}></input>
+        <label className='label-1'>tiempo</label>
+        <input className='input-1' type='number' value={timer} onChange={({target})=>setTimer( parseInt(target.value))}></input>
         <div>
-          <button onClick={onCancel}>Cancelar</button>
-          <button>{buttonActionTitle}</button>
+          <button className='button-5' onClick={onCancel}>Cancelar</button>
+          <button className='button-5'>{buttonActionTitle}</button>
         </div>
       </form>
     </div>

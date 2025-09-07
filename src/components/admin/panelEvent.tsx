@@ -36,13 +36,13 @@ export const PanelEvent = ({title="", buttonActionTitle="", onClose=()=>{}, onCr
     }
   return (
     <div className="panel-event-container">
-        <h2>{title}</h2>
-        <form onSubmit={onSubmit} id="submit-panel-event">
-            <label>Nombre del evento</label>
-            <input placeholder='Ingresa el nombre del nuevo evento' value={name} onChange={({target})=>setName(target.value)}></input>
+        <h2 className='h2-3'>{title}</h2>
+        <form onSubmit={onSubmit} className='panel-event-body' id="submit-panel-event">
+            <label className='label-1'>Nombre del evento</label>
+            <input className='input-1' placeholder='Ingresa el nombre del nuevo evento' value={name} onChange={({target})=>setName(target.value)}></input>
             <div>
-                <button onClick={onCancel}>Cancelar</button>
-                <button>{buttonActionTitle}</button>
+                <button className='button-5' onClick={onCancel}>Cancelar</button>
+                <button className='button-5'>{buttonActionTitle}</button>
             </div>
         </form>
     </div>

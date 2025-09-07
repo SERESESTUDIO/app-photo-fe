@@ -1,9 +1,22 @@
 .delete-advert {
     position: fixed;
-    left: 0;
-    top: 0;
-    width: 300px;
-    height: 400px;
+    left: calc(50vw - 260px);
+    top: calc(50vh - 310px);
+    width: 500px;
+    height: 600px;
     background-color: #ffffff;
-    border: 1px solid black;
+    border: 1px solid #6C7480;
+    border-radius: 20px;
+    padding: 10px;
+    display: grid;
+    justify-items: center;
+}
+.delete-advert div {
+    width: 50%;
+    display: grid;
+    grid-template-columns: []50% []50%;
+    justify-items: center;
+}
+.delete-advert div button {
+    width: 80%;
 }
