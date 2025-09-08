@@ -28,11 +28,11 @@ export const AdminProcess = ({event=emptyEvent, onClose=()=>{}}) => {
     <>
     <div className='admin-process-container'>
         <h2 className='h2-3'>{event.name}</h2>
-        <button className='button-1 button-repos' onClick={()=>setCreate(true)}>Crear nueva face</button>
-        <p className='p'>Ingresas las distintas transiciones y el tiempo de duración de cada face.</p>
+        <button className='button-1 button-repos' onClick={()=>setCreate(true)}>Crear nueva fase</button>
+        <p className='p'>Ingresas las distintas transiciones y el tiempo de duración de cada fase.</p>
         <div className='admin-process-container-div'>
             <div className='table-body'>
-                <div className="table-body-div-heads">Face</div>
+                <div className="table-body-div-heads">Fase</div>
                 <div className="table-body-div-heads">Nombre</div>
                 <div className="table-body-div-heads">Tiempo</div>
                 <div className="table-body-div-heads">Opciones</div>
@@ -52,7 +52,7 @@ export const AdminProcess = ({event=emptyEvent, onClose=()=>{}}) => {
         <button className='button-1' onClick={onClose}>Cerrar</button>
     </div>
     {(create) && <PanelProcess 
-        title='Crear nueva face' 
+        title='Crear nueva fase' 
         buttonActionTitle='Crear'
         event={event}
         onCancel={()=>setCreate(false)}
@@ -72,8 +72,8 @@ export const AdminProcess = ({event=emptyEvent, onClose=()=>{}}) => {
         }}
     />}
     {(deleteProcess) && <DeleteAdvert
-      title='Eliminar face'
-      description='Estas seguro que deseas eliminar esta face'
+      title='Eliminar fase'
+      description='Estás seguro que deseas eliminar esta fase'
       process={deleteProcess}
       onCancel={()=>setDeleteProcess(null)}
       onDelete={()=>{

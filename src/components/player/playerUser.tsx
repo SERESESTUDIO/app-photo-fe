@@ -48,7 +48,7 @@ export const PlayerUser = ({onAccess=emptyFunc}) => {
             <input className="input-1"  disabled={loading} type="text" placeholder="Ingresa tu nombre" value={name} onChange={({target})=>setName(target.value)}></input>
             <label className="label-1">Correo</label>
             <input className="input-1"  disabled={loading} type="email" placeholder="user@email.com" value={email} onChange={({target})=>setEmail(target.value)}></input>
-            <label className="label-1">Codigo de acceso</label>
+            <label className="label-1">Código de acceso</label>
             <input className="input-2"  disabled={loading} type="text" value={code} onChange={({target})=>setCode(target.value)}></input>
             <button className="button-2" disabled={loading} >Continuar</button>
         </form>

@@ -93,7 +93,7 @@ export const AdminManager = ({user=emptyUser}) => {
         <div>
           <div className="table-body">
             <div className="table-body-div-heads"><b>Nombre</b></div>
-            <div className="table-body-div-heads"><b>Codigo de acceso</b></div>
+            <div className="table-body-div-heads"><b>Código de acceso</b></div>
             <div className="table-body-div-heads"><b>Fecha de creación</b></div>
             <div className="table-body-div-heads"><b>Opciones</b></div>
           </div>
@@ -152,7 +152,7 @@ export const AdminManager = ({user=emptyUser}) => {
         />}
         {(deleteEvent) && <DeleteAdvert
           title="Eliminar evento"
-          description="Estas seguro que deseas eliminar el evento"
+          description="Estás seguro que deseas eliminar el evento"
           event={deleteEvent}
           onCancel={()=>setDeleteEvent(null)}
           onDelete={()=>{
@@ -162,7 +162,7 @@ export const AdminManager = ({user=emptyUser}) => {
         />}
         {(deleteMultEvent) && <DeleteAdvert
           title="Eliminar eventos multijugador"
-          description="Estas seguro que quieres eliminar todos los eventos multijugador"
+          description="Estás seguro que quieres eliminar todos los eventos multijugador"
           onCancel={()=>setDeleteMultEvent(false)}
           onDelete={()=>{
             setDeleteMultEvent(false);
@@ -171,7 +171,7 @@ export const AdminManager = ({user=emptyUser}) => {
         />}
         {(createMult) && <DeleteAdvert
           title="Crear evento multijugador"
-          description="Estas seguro que quieres crear un evento multijugador"
+          description="Estás seguro que quieres crear un evento multijugador"
           deleteWord="crear"
           action="Crear"
           onCancel={()=>setCreateMult(false)}

@@ -36,7 +36,7 @@ export const PanelProcess = ({event=emptyEvent, title="", buttonActionTitle="", 
       <h2 className='h2-3'>{title}</h2>
       <form onSubmit={onSubmitHandler}>
         <label className='label-1'>Nombre</label>
-        <input className='input-1' type='text' placeholder='Ingresa el nombre de la face' value={name} onChange={({target})=>setName(target.value)}></input>
+        <input className='input-1' type='text' placeholder='Ingresa el nombre de la fase' value={name} onChange={({target})=>setName(target.value)}></input>
         <label className='label-1'>tiempo</label>
         <input className='input-1' type='number' value={timer} onChange={({target})=>setTimer( parseInt(target.value))}></input>
         <div>
