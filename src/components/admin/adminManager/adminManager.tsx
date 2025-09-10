@@ -5,8 +5,6 @@ import { PanelEvent } from "../panelEvent.js";
 import { DeleteAdvert } from "../deleteAdvert/deleteAdvert.js";
 import { useMultiplayerConection } from "../../../services/useMultiplayerConection.js";
 import { AdminProcess } from "./adminProcess.js";
-
-import './adminManager.css';
 import { useGetProcessByEventId } from "../queries/useGetProcessByEventId.js";
 import { UpdateEvent } from "./updateEvent.js";
 import { ConfigurationIcon } from "../../icons/configurationIcon.js";
@@ -16,6 +14,10 @@ import { CreateIcon } from "../../icons/createIcon.js";
 import { StartIcon } from "../../icons/startIcon.js";
 import { StopIcon } from "../../icons/stopIcon.js";
 import { PauseIcon } from "../../icons/pauseIcon.js";
+import { useGetAllPhotos } from "../queries/useGetAllPhotos.js";
+import './adminManager.css';
+import { useDownloadImages } from "../queries/useDownloadImages.js";
+
 export const AdminManager = ({user=emptyUser}) => {
     const [ openPanelEvent, setPanelEvent ] = useState<boolean>(false);
     const [events, setEvents] = useState<IEvent[]>([]);
@@ -25,14 +27,29 @@ export const AdminManager = ({user=emptyUser}) => {
     const [processEvent, setProcessEvent] = useState<IEvent | null>(null);
     const [deleteMultEvent, setDeleteMultEvent] = useState<boolean>(false);
     const [createMult, setCreateMult] = useState<boolean>(false);
+    const [photosArr, setPhotosArr] = useState<string[]>([]);
     const { data, setValues } = useGetEvents();
     const { data: dataProcess, setValues: processValues} = useGetProcessByEventId();
     const [updateEvents, setUpdateEvents] = useState<any[]>([]);
     const {onConnect, events: updateEventsIn, cleanEvents, socket} = useMultiplayerConection();
+    const { data: photosData, setValues: photoValues, setData } = useGetAllPhotos();
+    const { loading, downloadImages } = useDownloadImages();
     useEffect(()=>{
       setValues();
       onConnect({mode:0});
     },[]);
+    useEffect(()=>{
+      if(photosData) {
+        const { success, photos } = photosData;
+        if(success) {
+          const newArr:string[] = [];
+          photos.map((photo:any)=>{
+            newArr.push(import.meta.env.VITE_DIRECTORY_AWS + photo.url.split('/').reverse()[0])}
+          );
+          setPhotosArr(newArr);
+        }
+      }
+    },[photosData])
     useEffect(()=>{
       if(updateEventsIn) {
         let newUpdateEvents:any[] = [];
@@ -81,6 +98,13 @@ export const AdminManager = ({user=emptyUser}) => {
     const onDeleteMultiplayerEvents = () => {
       setDeleteMultEvent(true);
     }
+    const onDownloadPhotos = () => {
+      photoValues();
+    }
+    const downloadPhotos = (photos:string[]) => {
+      downloadImages(photos);
+    }
+    
   return (
     <div className="admin-manager-container">
       <div className="admin-manager-body">
@@ -109,6 +133,7 @@ export const AdminManager = ({user=emptyUser}) => {
               </div>
             </div>
           </div>)}
+          {<button disabled={loading} onClick={onDownloadPhotos} className="button-1 button-download">{(loading) ? "Descargando fotos..." : "Descargar fotos"}</button>}
         </div>
         <div>
           <hr/>
@@ -178,6 +203,21 @@ export const AdminManager = ({user=emptyUser}) => {
           onDelete={()=>{
             setCreateMult(false);
             onCreateEventHandler();
+          }}
+        />}
+        {(photosArr.length > 0) && <DeleteAdvert
+          title="Descargar fotos"
+          description="Estás seguro que quieres descargar las fotos"
+          deleteWord="descargar"
+          action="descargar"
+          onCancel={()=>{
+            setPhotosArr([]);
+            setData(null);
+          }}
+          onDelete={()=>{
+            setPhotosArr([]);
+            setData(null);
+            downloadPhotos(photosArr);
           }}
         />}
       </div>

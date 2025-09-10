@@ -44,7 +44,7 @@ export const GameplayPanelPlayer = ({event=emptyEvent, user=emptyUser, socket=em
         socket.emit("sendPhoto", {eventId:event.id, processId, photo, user});
       }
     }
-  },[data, event, processId, user]);
+  },[data, processId]);
   const onSendPhoto = () => {
     if(img && event.state && user) {
       //enviar foto a la base de datos

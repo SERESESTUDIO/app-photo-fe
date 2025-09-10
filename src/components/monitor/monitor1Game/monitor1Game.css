@@ -10,13 +10,14 @@
     background-repeat: no-repeat;
 }
 .monitor-scan-body {
+    margin-top: 10vh;
     position: fixed;
     left: calc(50vw - 300px);
     top: 5vh;
     width: 600px;
     height: 80vh;
     display: grid;
-    grid-template-rows: []6% []12% []55% []0% []15%;
+    grid-template-rows: []8% []12% []55% []0%;
     justify-content: center;
     justify-items: center;
 }

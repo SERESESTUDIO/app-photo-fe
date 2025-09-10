@@ -26,7 +26,7 @@ export const Monitor3 = () => {
       {(!user) && <LogIn onPassAccess={(user)=>setUser(user)}/>}
       {(user && !socket) && <MonitorAccess connectionMode={2} onAccess={onAccessHandler}/>}
       {(user && socket && event && !event.timer && !event.state || user && socket && event && event.timer === 0 && event.state && event.state != "finished") && <WaitingMonitor event={event}/>}
-      {(user && socket && event && event.timer && event.timer > 0 && event.state != "finished") && <PhotoBlockPanel event={event} isPair={false}/>}
+      {(user && socket && event && event.timer && event.timer > 0 && event.state != "finished") && <PhotoBlockPanel event={event} isPair={false} socket={socket}/>}
       {(user && socket && event && event.state && event.state === "finished") && <FinishedPanel/>}
     </>
   )

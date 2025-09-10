@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/socket.io-client": "^1.4.36",
     "@wojtekmaj/react-qr-svg": "^2.0.0",
+    "axios": "^1.11.0",
     "bcrypt-ts": "^7.1.0",
     "ncrypt-js": "^2.1.2",
     "react": "^19.1.0",
@@ -22,6 +23,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@types/axios": "^0.14.4",
+    "@types/node": "^24.3.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
