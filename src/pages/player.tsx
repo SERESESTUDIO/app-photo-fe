@@ -14,7 +14,8 @@ export const Player = () => {
   const [accessCode, setAccessCode] = useState<string>("");
   const { onConnect, socket } = useMultiplayerConection();
   useEffect(()=>{
-    const _accessCode = window.location.href.split('/').reverse()[0];
+    const _accessCode = window.location.href.split('?').reverse()[0];
+    console.log(_accessCode);
     setAccessCode(_accessCode);
     allows();
   },[])
