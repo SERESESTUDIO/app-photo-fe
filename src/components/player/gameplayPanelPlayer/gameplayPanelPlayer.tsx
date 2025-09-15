@@ -106,7 +106,7 @@ export const GameplayPanelPlayer = ({event=emptyEvent, user=emptyUser, socket=em
               <input id='upload-file-input' type='file' accept="image/png, image/jpeg" hidden onChange={onInputFile}></input>
               <h2>{convertSecondsToMinutes(timer)}</h2>
               <TimerIcon className='player-gameplay-body-svg'/>
-              <p className='player-counter-body-p'>Se acabó el tiempo de espera para subir la imagen</p>
+              <p className='player-counter-body-p'></p>
           </div>
       </div>}
       {(img && !openCamera) && <div className='player-user-container'>
@@ -126,7 +126,7 @@ export const GameplayPanelPlayer = ({event=emptyEvent, user=emptyUser, socket=em
             </div>
             <h2>{convertSecondsToMinutes(timer)}</h2>
             <TimerIcon className='player-gameplay-body-svg'/>
-            <p className='player-counter-body-p'>Se acabó el tiempo de espera para subir la imagen</p>
+            <p className='player-counter-body-p'></p>
           </div>
         </div>}
         {(!img && openCamera) && <div className='player-camera-view'>

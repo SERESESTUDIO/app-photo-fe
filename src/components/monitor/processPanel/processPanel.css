@@ -3,20 +3,25 @@
   width: 80vw;
   height: 80vh;
   left: 10vw;
-  top: 10vh;
+  top: 13vh;
   display: grid;
-  grid-template-rows: []38% []15% []5% []20% []25%;
+  grid-template-rows: []30vh []20% []5% []20% []25%;
   justify-items: center;
   align-content: start;
   text-align: center;
 }
 .process-panel-container svg {
   width: 60px;
-  fill: #ffffffb4;
+  fill: #E11F2E;
+}
+.process-panel-container h1 {
+  color: #E11F2E;
+}
+.process-panel-container h2 {
+  color: #E11F2E;
 }
 .process-panel-container-head {
-  width: 24%;
-  margin-top: -4%;
+  margin-top: -2%;
 }
 .process-panel-container-img {
     width: 20%

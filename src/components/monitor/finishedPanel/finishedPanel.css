@@ -3,11 +3,19 @@
     width: 50vw;
     height: 80vh;
     left: 25vw;
-    top: 10vh;
+    top: 15vh;
     display: grid;
     grid-template-rows: []25% []10% []35% []25%;
     justify-items: center;
     align-content: start;
+}
+.finished-panel-container h1 {
+    font-size: 38pt;
+    color: #E11F2E;
+}
+.finished-panel-container h2 {
+    font-size: 32pt;
+    color: #E11F2E;
 }
 .finished-panel-container img {
     width: 40%

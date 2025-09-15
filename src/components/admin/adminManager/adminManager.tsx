@@ -177,7 +177,7 @@ export const AdminManager = ({user=emptyUser}) => {
         />}
         {(deleteEvent) && <DeleteAdvert
           title="Eliminar evento"
-          description="Estás seguro que deseas eliminar el evento"
+          description="¿Estás seguro que deseas eliminar el evento?"
           event={deleteEvent}
           onCancel={()=>setDeleteEvent(null)}
           onDelete={()=>{
@@ -187,7 +187,7 @@ export const AdminManager = ({user=emptyUser}) => {
         />}
         {(deleteMultEvent) && <DeleteAdvert
           title="Eliminar eventos multijugador"
-          description="Estás seguro que quieres eliminar todos los eventos multijugador"
+          description="¿Estás seguro que quieres eliminar todos los eventos multijugador?"
           onCancel={()=>setDeleteMultEvent(false)}
           onDelete={()=>{
             setDeleteMultEvent(false);
@@ -196,7 +196,7 @@ export const AdminManager = ({user=emptyUser}) => {
         />}
         {(createMult) && <DeleteAdvert
           title="Crear evento multijugador"
-          description="Estás seguro que quieres crear un evento multijugador"
+          description="¿Estás seguro que quieres crear un evento multijugador?"
           deleteWord="crear"
           action="Crear"
           onCancel={()=>setCreateMult(false)}
@@ -207,7 +207,7 @@ export const AdminManager = ({user=emptyUser}) => {
         />}
         {(photosArr.length > 0) && <DeleteAdvert
           title="Descargar fotos"
-          description="Estás seguro que quieres descargar las fotos"
+          description="¿Estás seguro que quieres descargar las fotos?"
           deleteWord="descargar"
           action="descargar"
           onCancel={()=>{

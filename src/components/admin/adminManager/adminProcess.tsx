@@ -73,7 +73,7 @@ export const AdminProcess = ({event=emptyEvent, onClose=()=>{}}) => {
     />}
     {(deleteProcess) && <DeleteAdvert
       title='Eliminar fase'
-      description='Estás seguro que deseas eliminar esta fase'
+      description='¿Estás seguro que deseas eliminar esta fase?'
       process={deleteProcess}
       onCancel={()=>setDeleteProcess(null)}
       onDelete={()=>{

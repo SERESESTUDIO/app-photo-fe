@@ -10,6 +10,7 @@
   background-repeat: no-repeat;
   overflow-y: auto;
   overflow-x: hidden;
+  color: black;
 }
 .admin-manager-body {
   background-color: #ffffff;

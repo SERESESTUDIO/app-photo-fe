@@ -20,9 +20,9 @@ export const ProcessPanel = ({event=emptyEvent}) => {
     }
   },[event]);
   return (
-    <div className="monitor-container">
+    <div className="monitor-container-2">
       <div className="process-panel-container">
-        <img className="process-panel-container-head" src="./img/selfie.webp"/>
+        <img className="process-panel-container-head" src="./img/selfie-2.webp"/>
         <h1 className="h1-1">{event.state}</h1>
         <TimerIcon/>
         <h2 className="h1-2">{`${convertSecondsToMinutes(timer)}`}</h2>

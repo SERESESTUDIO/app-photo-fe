@@ -9,20 +9,31 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.monitor-container-2 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('./img/background-02.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .monitor-scan-body {
     margin-top: 10vh;
     position: fixed;
     left: calc(50vw - 300px);
-    top: 5vh;
+    top: 0vh;
     width: 600px;
     height: 80vh;
     display: grid;
-    grid-template-rows: []8% []12% []55% []0%;
+    grid-template-rows: []8% []15% []55% []10% []0%;
     justify-content: center;
     justify-items: center;
 }
 .monitor-scan-body img {
-    width: 40%;
+    width: 60%;
 }
 .monitor-code {
     width: 40vh;
