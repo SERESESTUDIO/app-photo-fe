@@ -12,6 +12,15 @@ export const Monitor1 = () => {
   const [socket, setSocket] = useState<any>(null);
   const [event, setEvent] = useState<any>();
   useEffect(()=>{
+    window.addEventListener("keydown", (event)=>{
+      if(event.code === "ShiftLeft") {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        }
+      }
+    })
+  },[])
+  useEffect(()=>{
     if(socket) {
       window.addEventListener("dataUpdated", ({detail}:any)=>{
         const { events, constantEvent } = detail;

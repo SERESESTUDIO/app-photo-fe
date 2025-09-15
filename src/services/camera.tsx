@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import './camera.css';
+import { ReverseCameraIcon } from "../components/icons/reverseCameraIcon";
 const emptyFunc = (img:any) => {console.log(img)}
+let currentFacingMode: 'user' | 'environment' = 'user';
 export const Camera = ({onCaptureImg=emptyFunc}) => {
     const videoRef = useRef(null);
     useEffect(()=>{
@@ -38,10 +40,38 @@ export const Camera = ({onCaptureImg=emptyFunc}) => {
             onCaptureImg(imageDataURL);
         }
     }
+    async function toggleCamera(video:any) {
+      const videoElement: HTMLVideoElement = video.current;
+      // Toggle the facing mode
+      currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+
+      const constraints = {
+        video: {
+          facingMode: currentFacingMode
+        }
+      };
+    
+      try {
+        // Stop previous tracks
+        const currentStream = videoElement.srcObject as MediaStream;
+        if (currentStream) {
+          currentStream.getTracks().forEach(track => track.stop());
+        }
+      
+        // Get a new stream with the updated constraints
+        const newStream = await navigator.mediaDevices.getUserMedia(constraints);
+      
+        // Set the new stream as the video source
+        videoElement.srcObject = newStream;
+      } catch (error) {
+        console.error("Error switching cameras:", error);
+      }
+    }
   return (
     <>
         <video ref={videoRef} className="camera-preview" autoPlay/>
         {(videoRef) && <button className="camera-button-take-photo" onClick={()=>onCapture(videoRef)}></button>}
+        {(videoRef) && <div className="camera-button-reverse" onClick={()=>toggleCamera(videoRef)}><ReverseCameraIcon/></div>}
     </>
   )
 }
