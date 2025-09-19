@@ -69,7 +69,7 @@ export const Camera = ({onCaptureImg=emptyFunc}) => {
     }
   return (
     <>
-        <video webkit-playsinline ref={videoRef} className="camera-preview" autoPlay/>
+        <video webkit-playsinline playsInline ref={videoRef} className="camera-preview" autoPlay/>
         {(videoRef) && <button className="camera-button-take-photo" onClick={()=>onCapture(videoRef)}></button>}
         {(videoRef) && <div className="camera-button-reverse" onClick={()=>toggleCamera(videoRef)}><ReverseCameraIcon/></div>}
     </>
