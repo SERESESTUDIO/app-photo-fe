@@ -23,6 +23,11 @@
   color: #6c7480;
   font-size: 18pt;
 }
+.h2-4 {
+  font-family: "bold";
+  color: #e41f2e;
+  font-size: 18pt;
+}
 .label-1 {
   font-family: "medium";
   color: #6c7480;
@@ -31,6 +36,11 @@
 .label-2 {
   font-family: "medium";
   color: #ffffff;
+  font-size: 12pt;
+}
+.label-3 {
+  font-family: "medium";
+  color: #e41f2e;
   font-size: 12pt;
 }
 .advert {

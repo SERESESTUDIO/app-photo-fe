@@ -44,7 +44,7 @@ export const Player = () => {
   return (
     <>
       {(!user) && <PlayerUser onAccess={onAccessHandler} accessCode={accessCode}/>}
-      {(user && socket && event && !event.counter && !event.state || user && socket && event && event.counter === 0 && event.state && event.state != "finished") && <PlayerWaiting  event={event}/>}
+      {(user && socket && event && !event.counter && !event.state || user && socket && event && event.counter === 0 && event.state && event.state != "finished") && <PlayerWaiting />}
       {(user && socket && event && event.counter && event.counter > 0 && !event.timer || user && socket && event && event.counter && event.counter > 0 && event.timer && event.timer === 0) && <CounterPlayerPanel event={event}/>}
       {(user && socket && event && event.timer && event.timer > 0 && event.state != "finished") && <GameplayPanelPlayer socket={socket} event={event} user={user}/>}
       {(user && socket && event && event.state && event.state === "finished") && <FinishedPanelPlayer/>}

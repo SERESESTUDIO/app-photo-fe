@@ -5,7 +5,7 @@
   left: 10vw;
   top: 13vh;
   display: grid;
-  grid-template-rows: []30vh []20% []5% []20% []25%;
+  grid-template-rows: []25vh []25% []5% []20% []25%;
   justify-items: center;
   align-content: start;
   text-align: center;
@@ -21,7 +21,7 @@
   color: #E11F2E;
 }
 .process-panel-container-head {
-  margin-top: -2%;
+  margin-top: 2%;
   width: 30vh;
 }
 .process-panel-container-img {

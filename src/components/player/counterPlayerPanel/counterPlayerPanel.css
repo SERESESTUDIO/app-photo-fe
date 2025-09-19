@@ -8,6 +8,7 @@
   justify-content: center;
 }
 .player-counter-header img {
+    justify-self: center;
     height: 80%;
 }
 .player-counter-body {

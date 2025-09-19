@@ -15,8 +15,10 @@ import { StartIcon } from "../../icons/startIcon.js";
 import { StopIcon } from "../../icons/stopIcon.js";
 import { PauseIcon } from "../../icons/pauseIcon.js";
 import { useGetAllPhotos } from "../queries/useGetAllPhotos.js";
-import './adminManager.css';
 import { useDownloadImages } from "../queries/useDownloadImages.js";
+import { ArrowBackIcon } from "../../icons/arrowBackIcon.js";
+import { ArrowNextIcon } from "../../icons/arrowNextIcon.js";
+import './adminManager.css';
 
 export const AdminManager = ({user=emptyUser}) => {
     const [ openPanelEvent, setPanelEvent ] = useState<boolean>(false);
@@ -104,7 +106,12 @@ export const AdminManager = ({user=emptyUser}) => {
     const downloadPhotos = (photos:string[]) => {
       downloadImages(photos);
     }
-    
+    const onBackProcess = () => {
+      socket.emit("backProcess", { id: events[eventIndex].id });
+    }
+    const onNextProcess = () => {
+      socket.emit("nextProcess", { id: events[eventIndex].id });
+    }
   return (
     <div className="admin-manager-container">
       <div className="admin-manager-body">
@@ -144,6 +151,8 @@ export const AdminManager = ({user=emptyUser}) => {
             </select>
             <button className="admin-manager-buttons-button" onClick={()=>setCreateMult(true)}><CreateIcon/><b>Crear</b></button>
             <button className="admin-manager-buttons-button" onClick={()=>onDeleteMultiplayerEvents()}><DeleteIcon/><b>Eliminar</b></button>
+            <button className="admin-manager-buttons-button" onClick={onBackProcess}><ArrowBackIcon/><b>Anterior</b></button>
+            <button className="admin-manager-buttons-button" onClick={onNextProcess}><ArrowNextIcon/><b>Siguiente</b></button>
             <button className="admin-manager-buttons-button" onClick={onStartGameHandler}><StartIcon/><b>Iniciar</b></button>
             <button className="admin-manager-buttons-button" onClick={onPauseGameHandler}><PauseIcon/><b>Pausar</b></button>
             <button className="admin-manager-buttons-button" onClick={onStopGameHandler}><StopIcon/><b>Detener</b></button>

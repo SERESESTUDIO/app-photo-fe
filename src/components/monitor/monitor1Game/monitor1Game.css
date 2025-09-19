@@ -4,10 +4,10 @@
     top: 0;
     width: 100vw;
     height: 100vh;
-    background: url('./img/background.webp');
+    /*background: url('./img/background-02.webp');
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
 }
 .monitor-container-2 {
     position: fixed;
@@ -15,10 +15,10 @@
     top: 0;
     width: 100vw;
     height: 100vh;
-    background: url('./img/background-02.webp');
+    /*background: url('./img/background-02.webp');
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
 }
 .monitor-scan-body {
     margin-top: 10vh;
@@ -28,12 +28,12 @@
     width: 600px;
     height: 80vh;
     display: grid;
-    grid-template-rows: []8% []15% []55% []10% []0%;
+    grid-template-rows: []6% []20% []52% []10% []0%;
     justify-content: center;
     justify-items: center;
 }
 .monitor-scan-body img {
-    width: 60%;
+    width: 70%;
 }
 .monitor-code {
     width: 40vh;

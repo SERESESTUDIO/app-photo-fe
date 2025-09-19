@@ -15,9 +15,9 @@ export const CounterPanel = ({event=emptyEvent}) => {
     <div className='monitor-container'>
         <div className='counter-panel-container'>
             <div></div>
-            <h1 className='h1-1'>{(counter != "¡A jugar!") ? "El siguiente reto iniciará en:" : ""}</h1>
-            <h1 className='h1-2'>{counter}</h1>
-            <img src='./img/Logo-01.webp'/>
+            <h1 className='h1-3'>{(counter != "¡A jugar!") ? "El siguiente reto iniciará en:" : ""}</h1>
+            <h1 className='h1-3'>{counter}</h1>
+            <img src='./img/Logo-02.webp'/>
         </div>
     </div>
   )

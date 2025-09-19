@@ -7,7 +7,7 @@
     background-color: #ffffff;
     display: grid;
     grid-template-rows: []300px []300px;
-    box-shadow: 0px 0px 5px 1px #ffffff;
+    box-shadow: 0px 0px 5px 1px #E41F2E;
 }
 .log-in-header {
     background-image: linear-gradient(#B11D23, #E41F2E);

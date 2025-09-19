@@ -6,6 +6,8 @@ import './playerUser.css';
 const emptyFunc = (data:any) => {console.log(data)}
 export const PlayerUser = ({onAccess=emptyFunc, accessCode=""}) => {
     const [name, setName] = useState<string>("");
+    const [apellido1, setApellido1] = useState<string>("");
+    const [apellido2, setApellido2] = useState<string>("");
     const [message, setMessage] = useState<string>("");
     const [rawEvent, setRawEvent] = useState<any>();
     const {data:eventData, setValues: eventValues} = useGetEventByCode();
@@ -22,7 +24,7 @@ export const PlayerUser = ({onAccess=emptyFunc, accessCode=""}) => {
         if(eventData) {
             const { success, event } = eventData;
             if(success) {
-                setValues({ name, email: `${name}@email.com`, DNI:'', department:'', eventId:event.id });
+                setValues({ name: `${name} ${apellido1} ${apellido2}`, email: `${name}_${apellido1}_${apellido2}@email.com`, DNI:'', department:'', eventId:event.id });
                 setRawEvent(event);
             }
         }
@@ -42,9 +44,10 @@ export const PlayerUser = ({onAccess=emptyFunc, accessCode=""}) => {
             <img src="./img/Logo-01.webp"/>
         </div>
         <form onSubmit={onSubmitHandler} className="player-user-body">
-            <label className="label-1">Nombre</label>
-            <input className="input-1"  disabled={loading} type="text" placeholder="Ingresa tu nombre completo" value={name} onChange={({target})=>setName(target.value)}></input>
-            <button className="button-2" disabled={(!loading && name != "") ? false : true} >Continuar</button>
+            <input className="input-1"  disabled={loading} type="text" placeholder="Nombre" value={name} onChange={({target})=>setName(target.value)}></input>
+            <input className="input-1"  disabled={loading} type="text" placeholder="Primer apellido" value={apellido1} onChange={({target})=>setApellido1(target.value)}></input>
+            <input className="input-1"  disabled={loading} type="text" placeholder="Segundo apellido" value={apellido2} onChange={({target})=>setApellido2(target.value)}></input>
+            <button className="button-2" disabled={(!loading && name != "" && apellido1 != "" && apellido2 != "") ? false : true} >Continuar</button>
         </form>
         {(message != "") && <label className="advert">{message}</label>}
     </div>

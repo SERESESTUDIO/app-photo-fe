@@ -11,12 +11,14 @@
 }
 .player-gameplay-header img {
     width: 30%;
-    margin-top: 40%;
+    margin-top: 20%;
 }
 .player-gameplay-header h2 {
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 0px;
+    font-size: 10pt;
+    text-align: left;
 }
 .player-gameplay-body {
     display: grid;
@@ -30,18 +32,22 @@
 }
 .player-gameplay-body-svg {
     position: absolute;
-    bottom: 10vh;
+    bottom: 3vh;
     width: 10vw;
     height: 10vw;
+    left: calc(50vw - 5vw);
     color: #6C7480;
     fill: #6C7480;
 }
 .player-gameplay-body h2 {
     position: absolute;
-    bottom: 16vh;
+    width: 30vw;
+    bottom: 8vh;
     color: #E41F2E;
     font-family: 'bold';
     font-size: 24pt;
+    text-align: center;
+    left: calc(50vw - 15vw);
 }
 .player-gameplay-head {
     background-color: #E41F2E;
@@ -64,6 +70,7 @@
     width: 80vw;
     height: 70px;
     border-radius: 10px;
+    display: grid;
 }
 .player-gameplay-advert div {
     background-color: #ffffff;
