@@ -13,12 +13,14 @@ export const PhotoBlockPanel = ({event=emptyEvent, isPair=true, socket=emptySock
       let newPhotos:any[] = [];
       let players:any[] = [];
       let counter:number = 0;
+      console.log(isPair);
       for(const id in event.users) {
-        if(counter % 2 === 0 && isPair) {
+        /*if(counter % 2 === 0 && isPair) {
           players.push(event.users[id]);
         } else if(counter % 2 != 0 && !isPair) {
           players.push(event.users[id]);
-        }
+        }*/
+        players.push(event.users[id]);
         counter++;
       }
       for(const id in event.process) {
