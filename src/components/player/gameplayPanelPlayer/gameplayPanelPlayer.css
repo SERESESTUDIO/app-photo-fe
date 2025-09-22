@@ -93,3 +93,12 @@
     bottom: 0;
     background: black;
 }
+.player-gameplay-b {
+    position: absolute;
+    margin-top: -40px;
+    width: 100vw;
+    text-align: center;
+    font-family: 'bold';
+    font-size: 10pt;
+    color: #6C7480;
+}

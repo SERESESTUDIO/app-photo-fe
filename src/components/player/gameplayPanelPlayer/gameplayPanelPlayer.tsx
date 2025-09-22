@@ -15,6 +15,7 @@ export const GameplayPanelPlayer = ({event=emptyEvent, user=emptyUser, socket=em
   const [img, setImg] = useState<any>(null);
   const [openCamera, setOpenCamera] = useState<boolean>(false);
   const [processId, setProcessId] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const { data, loading, setValues } = useSendPhoto();
   const imgRef = useRef(null);
   useEffect(()=>{
@@ -42,6 +43,8 @@ export const GameplayPanelPlayer = ({event=emptyEvent, user=emptyUser, socket=em
       const { success, photo } = data;
       if(success) {
         socket.emit("sendPhoto", {eventId:event.id, processId, photo, user});
+        setMessage("La imagen se ha enviado correctamente.");
+        setTimeout(()=>{setMessage("")},5000);
       }
     }
   },[data, processId]);
@@ -92,6 +95,7 @@ export const GameplayPanelPlayer = ({event=emptyEvent, user=emptyUser, socket=em
               <h2 className='h2-1'>{event.state}</h2>
           </div>
           <div className='player-gameplay-body'>
+              {(message != "") && <b className='player-gameplay-b'>{message}</b>}
               <div className='button-3' onClick={()=>setOpenCamera(true)}>
                 <CameraIcon/>
                 <b>Tomar foto</b>
